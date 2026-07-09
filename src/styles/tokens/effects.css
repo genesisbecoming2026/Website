@@ -1,0 +1,61 @@
+/* ============================================================
+   Genesis Becoming — Effects
+   Glass, light, shadow, blur. Depth as atmosphere. Motion as
+   communication. Everything precise; nothing bounces.
+   ============================================================ */
+
+:root {
+  /* ---- Elevation shadows (soft, warm-tinted, diffuse) ------ */
+  --shadow-none:  none;
+  --shadow-sm:    0 1px 2px rgba(20,20,20,0.28);
+  --shadow-md:    0 8px 24px -8px rgba(20,20,20,0.45);
+  --shadow-lg:    0 24px 60px -16px rgba(20,20,20,0.55);
+  --shadow-xl:    0 48px 120px -24px rgba(0,0,0,0.65);
+  /* Gold glow — used sparingly, for focus/ambient light */
+  --glow-gold:    0 0 48px -8px color-mix(in oklch, var(--gb-gold) 45%, transparent);
+
+  /* ---- Glass surfaces --------------------------------------
+     Real glass: a translucent film + blur + a top light edge
+     + inner sheen. Use --glass-blur on backdrop-filter. */
+  --glass-blur:        blur(24px) saturate(120%); /* @kind other */
+  --glass-blur-strong: blur(40px) saturate(130%); /* @kind other */
+  --glass-fill-dark:   var(--gb-glass-dark);
+  --glass-fill-light:  var(--gb-glass-light);
+  --glass-edge:        inset 0 1px 0 0 color-mix(in oklch, var(--gb-bone) 16%, transparent);
+  --glass-edge-sheen:  inset 0 1px 0 0 color-mix(in oklch, var(--gb-bone) 22%, transparent),
+                       inset 0 -1px 0 0 color-mix(in oklch, var(--gb-ink) 30%, transparent);
+
+  /* ---- Protection gradients (legibility over imagery) ------ */
+  --veil-bottom: linear-gradient(to top,
+                   var(--gb-ink) 0%,
+                   color-mix(in oklch, var(--gb-ink) 60%, transparent) 40%,
+                   transparent 100%);
+  --veil-top:    linear-gradient(to bottom,
+                   color-mix(in oklch, var(--gb-ink) 80%, transparent) 0%,
+                   transparent 100%);
+
+  /* ---- Ambient soft gradients (atmosphere, never loud) ----- */
+  --ambient-warm:  radial-gradient(120% 120% at 50% -10%,
+                     color-mix(in oklch, var(--gb-gold) 10%, transparent) 0%,
+                     transparent 55%);
+  --ambient-deep:  radial-gradient(100% 100% at 50% 120%,
+                     var(--gb-ink-warm) 0%, var(--gb-ink) 60%);
+
+  /* ---- Motion — precise, intentional, never bouncy --------- */
+  /* Cinematic ease: slow settle, no overshoot */
+  --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --ease-glide:     cubic-bezier(0.4, 0.0, 0.2, 1); /* @kind other */
+  --ease-reveal:    cubic-bezier(0.16, 1, 0.3, 1);  /* @kind other */
+  /* Engineered ease — TNT's motion dialect. Steeper, more linear,
+     deliberate rather than soft-settling. Used only in TNT's world. */
+  --ease-engineered: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+
+  --dur-fast:    240ms;   /* @kind other */
+  --dur-base:    420ms;   /* @kind other */
+  --dur-slow:    720ms;   /* @kind other */
+  --dur-reveal:  1100ms;  /* @kind other */
+
+  /* ---- Hover / press conventions --------------------------- */
+  --hover-lift:   translateY(-2px);        /* @kind other */
+  --press-settle: translateY(0) scale(0.995); /* @kind other */
+}

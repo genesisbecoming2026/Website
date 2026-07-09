@@ -1,0 +1,60 @@
+/* ============================================================
+   Genesis Becoming — Color System
+   A warm, cinematic palette. Near-black grounds, bone light,
+   champagne gold as the single voice of the brand, clay as
+   its quiet counterpoint. Restraint over saturation.
+   ============================================================ */
+
+:root {
+  /* ---- Base scale: warm ink → bone -------------------------- */
+  --gb-ink:        #141414; /* pure near-black — primary ground        */
+  --gb-ink-warm:   #1D1815; /* warm near-black — deep atmospheric base */
+  --gb-charcoal:   #1F1F1F; /* raised surface on ink                    */
+  --gb-stone:      #B8B3AA; /* warm grey — muted, supporting text       */
+  --gb-sand:       #DCCFBF; /* parchment — soft light surface / borders */
+  --gb-bone:       #F5F2EA; /* ivory — primary light, headlines on dark */
+
+  /* ---- Brand voices ---------------------------------------- */
+  --gb-gold:       #C9B38C; /* champagne gold — the signature accent    */
+  --gb-clay:       #B76E4D; /* terracotta clay — warm counterpoint      */
+
+  /* ---- Gold tints/shades (derived, harmonious) ------------- */
+  --gb-gold-soft:  oklch(from var(--gb-gold) calc(l + 0.06) c h);
+  --gb-gold-deep:  oklch(from var(--gb-gold) calc(l - 0.10) c h);
+  --gb-clay-deep:  oklch(from var(--gb-clay) calc(l - 0.08) c h);
+
+  /* ---- Translucent films (glass, veils, protection) -------- */
+  --gb-glass-dark:   color-mix(in oklch, var(--gb-charcoal) 55%, transparent);
+  --gb-glass-light:  color-mix(in oklch, var(--gb-bone) 8%, transparent);
+  --gb-veil-ink:     color-mix(in oklch, var(--gb-ink) 72%, transparent);
+  --gb-hairline:     color-mix(in oklch, var(--gb-bone) 14%, transparent);
+  --gb-hairline-ink: color-mix(in oklch, var(--gb-ink) 12%, transparent);
+
+  /* ============================================================
+     Semantic aliases — reference these in components
+     ============================================================ */
+
+  /* Grounds & surfaces (dark-first, the native mode) */
+  --surface-base:    var(--gb-ink);
+  --surface-deep:    var(--gb-ink-warm);
+  --surface-raised:  var(--gb-charcoal);
+  --surface-glass:   var(--gb-glass-dark);
+  --surface-light:   var(--gb-bone);
+
+  /* Text */
+  --text-primary:    var(--gb-bone);
+  --text-secondary:  var(--gb-stone);
+  --text-muted:      color-mix(in oklch, var(--gb-stone) 62%, transparent);
+  --text-accent:     var(--gb-gold);
+  --text-on-light:   var(--gb-ink);
+  --text-on-light-2: color-mix(in oklch, var(--gb-ink) 62%, transparent);
+
+  /* Lines & edges */
+  --border-hairline: var(--gb-hairline);
+  --border-soft:     color-mix(in oklch, var(--gb-sand) 22%, transparent);
+  --border-gold:     color-mix(in oklch, var(--gb-gold) 40%, transparent);
+
+  /* Accents */
+  --accent-primary:  var(--gb-gold);
+  --accent-secondary:var(--gb-clay);
+}

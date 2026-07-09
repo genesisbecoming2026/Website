@@ -1,0 +1,34 @@
+/* Genesis Becoming — base document resets.
+   Tokens & fonts come from ./styles/styles.css (imported first). */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--gb-ink);
+  font-family: var(--font-sans);
+  color: var(--gb-bone);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+em {
+  font-style: italic;
+}
+
+::selection {
+  background: color-mix(in oklch, var(--gb-gold) 40%, transparent);
+  color: var(--gb-bone);
+}

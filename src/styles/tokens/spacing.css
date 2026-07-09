@@ -1,0 +1,52 @@
+/* ============================================================
+   Genesis Becoming — Spacing & Layout
+   Immense white space. A generous, architectural rhythm built
+   on a 4px base, opening into cinematic section gaps.
+   ============================================================ */
+
+:root {
+  /* ---- Base spacing scale (4px root) ---- */
+  --space-0:   0;
+  --space-1:   0.25rem;  /* 4  */
+  --space-2:   0.5rem;   /* 8  */
+  --space-3:   0.75rem;  /* 12 */
+  --space-4:   1rem;     /* 16 */
+  --space-5:   1.5rem;   /* 24 */
+  --space-6:   2rem;     /* 32 */
+  --space-7:   3rem;     /* 48 */
+  --space-8:   4rem;     /* 64 */
+  --space-9:   6rem;     /* 96 */
+  --space-10:  8rem;     /* 128 */
+  --space-11:  12rem;    /* 192 — cinematic section breathing */
+  --space-12:  16rem;    /* 256 */
+
+  /* ---- Semantic spacing ---- */
+  --gap-inline:   var(--space-3);
+  --gap-stack:    var(--space-5);
+  --pad-card:     var(--space-6);
+  --pad-section:  var(--space-10);
+  --pad-gutter:   clamp(1.5rem, 5vw, 6rem); /* page side gutters */
+
+  /* ---- Layout widths ---- */
+  --measure-text:  62ch;   /* comfortable reading measure  */
+  --measure-lead:  46ch;   /* narrow, editorial lead       */
+  --width-content: 1120px;
+  --width-wide:    1440px;
+  --width-full:    1680px;
+
+  /* ---- Radii — soft, restrained, never playful ---- */
+  --radius-none: 0;
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-pill: 999px;
+
+  /* ---- Z-index scale ---- */
+  --z-base:    0;   /* @kind other */
+  --z-raised:  10;  /* @kind other */
+  --z-overlay: 100; /* @kind other */
+  --z-nav:     200; /* @kind other */
+  --z-modal:   300; /* @kind other */
+}
