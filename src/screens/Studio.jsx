@@ -4,6 +4,7 @@ import { Statement } from '../components/Statement.jsx';
 import { Eyebrow } from '../components/Eyebrow.jsx';
 import { Button } from '../components/Button.jsx';
 import { GlassPanel } from '../components/GlassPanel.jsx';
+import { PhotoMoment } from '../components/PhotoMoment.jsx';
 import { CALENDLY_URL, PROCESS } from '../config.js';
 import { revealUp, revealLeft, revealRight, staggerParent, staggerChild, inViewProps } from '../motion.js';
 
@@ -15,6 +16,50 @@ const WHO_WE_SERVE = [
   'You want your digital presence to reflect the quality of your work.',
 ];
 
+/**
+ * ProcessStep — progressive disclosure. The title is always visible;
+ * clicking reveals a short explanation of what that step actually
+ * involves. Rewards curiosity without overwhelming anyone who just
+ * wants to keep scrolling.
+ */
+function ProcessStep({ index, step }) {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <motion.div variants={staggerChild} style={{ paddingLeft: 'var(--space-5)' }}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          display: 'flex', alignItems: 'baseline', gap: 'var(--space-5)',
+          background: 'transparent', border: 'none', padding: 0, cursor: 'pointer',
+          textAlign: 'left', width: '100%',
+        }}
+        aria-expanded={open}
+      >
+        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--type-label)', color: 'var(--gb-gold)', letterSpacing: 'var(--tracking-wide)' }}>0{index + 1}</span>
+        <p style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: 'var(--type-title)', color: 'var(--gb-bone)', flex: 1 }}>{step.title}</p>
+        <motion.span
+          aria-hidden="true"
+          animate={{ rotate: open ? 45 : 0 }}
+          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          style={{ fontSize: '1.4rem', color: 'var(--gb-gold)', lineHeight: 1 }}
+        >
+          +
+        </motion.span>
+      </button>
+      <motion.div
+        initial={false}
+        animate={{ height: open ? 'auto' : 0, opacity: open ? 1 : 0 }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        style={{ overflow: 'hidden' }}
+      >
+        <p style={{ margin: '10px 0 0 calc(1.2em + var(--space-5))', fontSize: 'var(--type-small)', lineHeight: 1.6, color: 'var(--gb-stone)', maxWidth: '52ch' }}>
+          {step.detail}
+        </p>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export function Studio() {
   const processRef = React.useRef(null);
   const { scrollYProgress } = useScroll({ target: processRef, offset: ['start 0.8', 'end 0.4'] });
@@ -25,9 +70,9 @@ export function Studio() {
       <section style={{ padding: 'var(--space-11) var(--pad-gutter) var(--space-9)' }}>
         <motion.div {...inViewProps} variants={revealUp}>
           <Eyebrow style={{ marginBottom: 'var(--space-6)' }}>The Studio</Eyebrow>
-          <Statement size="hero">A studio built<br />around <em style={{ color: 'var(--gb-gold)', fontStyle: 'italic' }}>becoming.</em></Statement>
+          <Statement size="hero" level="h1">A studio built<br />around <em style={{ color: 'var(--gb-gold)', fontStyle: 'italic' }}>becoming.</em></Statement>
           <p style={{ marginTop: 'var(--space-7)', maxWidth: '56ch', fontSize: 'var(--type-lead)', fontWeight: 300, lineHeight: 'var(--leading-relaxed)', color: 'var(--gb-stone)' }}>
-            Genesis Becoming is a brand identity and immersive design studio based in Columbia, Tennessee. We exist because every business we've ever worked with already had something worth communicating — they just hadn't been shown how to say it yet.
+            Genesis Becoming is a brand identity and immersive design studio based in Columbia, Tennessee, serving the greater Nashville area. We exist because every business we've ever worked with already had something worth communicating — they just hadn't been shown how to say it yet.
           </p>
         </motion.div>
       </section>
@@ -41,10 +86,7 @@ export function Studio() {
           <div style={{ position: 'absolute', left: -1, top: 6, bottom: 6, width: 1, background: 'var(--border-hairline)' }} />
           <motion.div style={{ position: 'absolute', left: -1, top: 6, width: 1, height: lineHeight, background: 'var(--gb-gold)' }} />
           {PROCESS.map((step, i) => (
-            <motion.div key={i} variants={staggerChild} style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-5)', paddingLeft: 'var(--space-5)' }}>
-              <span style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--type-label)', color: 'var(--gb-gold)', letterSpacing: 'var(--tracking-wide)' }}>0{i + 1}</span>
-              <p style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: 'var(--type-title)', color: 'var(--gb-bone)' }}>{step}</p>
-            </motion.div>
+            <ProcessStep key={i} index={i} step={step} />
           ))}
         </motion.div>
         <motion.p {...inViewProps} variants={revealUp} style={{ marginTop: 'var(--space-7)', maxWidth: '52ch', fontSize: 'var(--type-small)', color: 'var(--gb-stone)', fontStyle: 'italic' }}>
@@ -75,6 +117,17 @@ export function Studio() {
             </GlassPanel>
           </motion.div>
         </div>
+
+        <PhotoMoment
+          src="/images/studio/studio-hands-sketching-tablet-desk.jpg"
+          alt="Hand sketching with a stylus on a tablet beside an open laptop, warm window light across the desk"
+          aspectRatio="21 / 9"
+          style={{ marginTop: 'var(--space-9)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', maxWidth: 'var(--width-content)', marginLeft: 'auto', marginRight: 'auto' }}
+        >
+          <p style={{ margin: 0, fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 'var(--type-title)', color: 'var(--gb-bone)', lineHeight: 1.35 }}>
+            Every identity is shaped by hand — <em style={{ color: 'var(--gb-gold)' }}>one deliberate mark at a time.</em>
+          </p>
+        </PhotoMoment>
       </section>
 
       <section style={{

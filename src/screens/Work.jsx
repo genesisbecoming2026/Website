@@ -4,6 +4,7 @@ import { Statement } from '../components/Statement.jsx';
 import { Eyebrow } from '../components/Eyebrow.jsx';
 import { Button } from '../components/Button.jsx';
 import { WorkCard } from '../components/WorkCard.jsx';
+import { Testimonials } from '../components/Testimonials.jsx';
 import { PROJECTS, CALENDLY_URL } from '../config.js';
 import { revealUp, staggerParent, inViewProps } from '../motion.js';
 
@@ -21,7 +22,7 @@ export function Work({ onEnterProject }) {
       <section style={{ padding: 'var(--space-11) var(--pad-gutter) var(--space-9)' }}>
         <motion.div {...inViewProps} variants={revealUp}>
           <Eyebrow style={{ marginBottom: 'var(--space-6)' }}>Selected Work</Eyebrow>
-          <Statement size="hero">Don't tell people<br />you're good.<br /><em style={{ color: 'var(--gb-gold)', fontStyle: 'italic' }}>Show them.</em></Statement>
+          <Statement size="hero" level="h1">Don't tell people<br />you're good.<br /><em style={{ color: 'var(--gb-gold)', fontStyle: 'italic' }}>Show them.</em></Statement>
         </motion.div>
       </section>
 
@@ -39,7 +40,7 @@ export function Work({ onEnterProject }) {
                 index={String(i + 1).padStart(2, '0')}
                 title={p.title}
                 world={p.id}
-                image={p.heroImage}
+                image={p.thumbnailImage || p.heroImage}
                 meta={p.summary}
                 onClick={() => onEnterProject(p.id)}
               />
@@ -56,6 +57,10 @@ export function Work({ onEnterProject }) {
           ))}
         </div>
       </section>
+
+      {/* Full testimonial collection — the dedicated, easy-to-find place
+          for client voices, right after seeing the actual work. */}
+      <Testimonials />
 
       <section style={{
         padding: 'var(--space-11) var(--pad-gutter)', textAlign: 'center',

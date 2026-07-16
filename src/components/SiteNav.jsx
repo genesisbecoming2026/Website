@@ -27,7 +27,11 @@ export function SiteNav({
 }) {
   const [hover, setHover] = React.useState(null);
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const isMobile = useIsMobile();
+  // 860 (the site-wide default) is too narrow for six links + logo + CTA
+  // in one pill — real overflow starts around 900px and doesn't clear
+  // until ~1250px, spilling text outside the glass pill's rounded edge
+  // for a wide range of common laptop widths. 1280 clears it with margin.
+  const isMobile = useIsMobile(1280);
 
   const bar = {
     display: 'flex',

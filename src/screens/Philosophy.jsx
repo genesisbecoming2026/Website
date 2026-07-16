@@ -36,7 +36,7 @@ export function Philosophy() {
       <section style={{ padding: 'var(--space-11) var(--pad-gutter) var(--space-9)' }}>
         <motion.div {...inViewProps} variants={revealUp}>
           <Eyebrow style={{ marginBottom: 'var(--space-6)' }}>Our Approach</Eyebrow>
-          <Statement size="hero">Great design begins<br />long before the <em style={{ color: 'var(--gb-gold)', fontStyle: 'italic' }}>logo.</em></Statement>
+          <Statement size="hero" level="h1">Great design begins<br />long before the <em style={{ color: 'var(--gb-gold)', fontStyle: 'italic' }}>logo.</em></Statement>
           <p style={{ marginTop: 'var(--space-7)', maxWidth: '58ch', fontSize: 'var(--type-lead)', fontWeight: 300, lineHeight: 'var(--leading-relaxed)', color: 'var(--gb-stone)' }}>
             Genesis Becoming is a creative studio specializing in brand identity, website design, and creative direction for businesses that want to communicate with greater clarity and confidence.
           </p>

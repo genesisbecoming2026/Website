@@ -4,6 +4,7 @@ import { GlassPanel } from '../components/GlassPanel.jsx';
 import { ProjectNavFooter } from '../components/ProjectNavFooter.jsx';
 import { MediaSlot } from '../components/MediaSlot.jsx';
 import { ProjectCursor } from '../components/ProjectCursor.jsx';
+import { Breadcrumb } from '../components/Breadcrumb.jsx';
 import { ScrollClipReveal } from '../components/ScrollClipReveal.jsx';
 import { CALENDLY_URL, PROJECTS, TNT_BRAND } from '../config.js';
 
@@ -30,7 +31,7 @@ function TNTLogoCard({ src, colors }) {
         </defs>
         <rect width="100%" height="100%" fill="url(#tnt-logo-grid)" />
       </svg>
-      <img src={src} alt="TNT Builders logo" style={{ position: 'relative', width: '100%', height: '100%', objectFit: 'contain', transform: hover ? 'scale(1.04)' : 'scale(1)', transition: 'transform 0.4s cubic-bezier(0.65,0,0.35,1)' }} />
+      <img src={src} alt="TNT Builders logo" loading="lazy" decoding="async" style={{ position: 'relative', width: '100%', height: '100%', objectFit: 'contain', transform: hover ? 'scale(1.04)' : 'scale(1)', transition: 'transform 0.4s cubic-bezier(0.65,0,0.35,1)' }} />
     </div>
   );
 }
@@ -83,6 +84,15 @@ export function TNTWorld({ onNavigate, onNavigateProject }) {
       >
         ← Back to Work
       </button>
+
+      <div style={{ position: 'fixed', top: 68, left: 'var(--pad-gutter)', zIndex: 49 }}>
+        <Breadcrumb
+          items={[{ label: 'Home', page: 'home' }, { label: 'Work', page: 'work' }, { label: 'TNT Builders' }]}
+          onNavigate={onNavigate}
+          color={colors.seaSaltWhite}
+          accentColor={colors.heroRed}
+        />
+      </div>
 
       {/* Faint continuous blueprint texture — present throughout the whole page */}
       <svg aria-hidden="true" style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', opacity: 0.06, pointerEvents: 'none', zIndex: 1 }} preserveAspectRatio="none">
@@ -179,14 +189,21 @@ export function TNTWorld({ onNavigate, onNavigateProject }) {
         </div>
       </div>
 
-      {/* Brand Overview — real founders, real story */}
-      <div style={{ padding: 'var(--space-10) var(--pad-gutter) var(--space-9)', maxWidth: '760px', margin: '0 auto' }}>
-        <ScrollClipReveal>
-          <div style={{ fontSize: 'var(--type-label)', letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase', color: colors.heroRed, marginBottom: 10 }}>Brand Overview</div>
-          <p style={{ margin: 0, fontSize: 'var(--type-small)', lineHeight: 1.7, color: colors.riverStoneGray }}>
-            TNT Builders has never been just about construction. It's about {TNT_BRAND.founders} — a family business built on honesty, relationships, craftsmanship, and doing things the right way. Every home is temporary. Every relationship becomes part of a legacy.
-          </p>
-        </ScrollClipReveal>
+      {/* Brand Overview — real founders, real story, real crew on site */}
+      <div style={{ padding: 'var(--space-10) var(--pad-gutter) var(--space-9)', maxWidth: '900px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-7)', alignItems: 'center' }}>
+          <ScrollClipReveal>
+            <div style={{ fontSize: 'var(--type-label)', letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase', color: colors.heroRed, marginBottom: 10 }}>Brand Overview</div>
+            <p style={{ margin: 0, fontSize: 'var(--type-small)', lineHeight: 1.7, color: colors.riverStoneGray }}>
+              TNT Builders has never been just about construction. It's about {TNT_BRAND.founders} — a family business built on honesty, relationships, craftsmanship, and doing things the right way. Every home is temporary. Every relationship becomes part of a legacy.
+            </p>
+          </ScrollClipReveal>
+          <ScrollClipReveal>
+            <div style={{ borderRadius: 6, overflow: 'hidden', aspectRatio: '4 / 3' }}>
+              <img src={project.crewImage} alt="TNT Builders crew on site in branded shirts, framing under construction behind them" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            </div>
+          </ScrollClipReveal>
+        </div>
       </div>
 
       {/* The real client quote — a quiet pull-quote moment */}
@@ -196,6 +213,27 @@ export function TNTWorld({ onNavigate, onNavigateProject }) {
             "{TNT_BRAND.quote}"
           </p>
         </ScrollClipReveal>
+      </div>
+
+      {/* The Strategy — the real origin story behind the name and mark */}
+      <div style={{ padding: 'var(--space-11) var(--pad-gutter)', background: 'rgba(255,255,255,0.02)', borderTop: `1px solid ${colors.riverStoneGray}22` }}>
+        <div style={{ maxWidth: '760px', margin: '0 auto' }}>
+          <ScrollClipReveal>
+            <div style={{ fontSize: 'var(--type-label)', letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase', color: colors.heroRed, marginBottom: 'var(--space-6)' }}>The Strategy</div>
+            <p style={{ margin: 0, fontFamily: fontDisplay, fontWeight: 400, fontSize: 'var(--type-title)', lineHeight: 1.35, color: colors.seaSaltWhite }}>
+              For twenty years, Toby and Trina had a name they never let themselves use.
+            </p>
+            <p style={{ margin: 'var(--space-6) 0 0', fontSize: 'var(--type-small)', lineHeight: 1.7, color: colors.riverStoneGray }}>
+              Their names both start with T. For two decades, it was a running joke between them — TNT, because together they could do a lot of damage. But it never felt like something serious enough to put on a truck. It felt too personal, not corporate enough for a real business.
+            </p>
+            <p style={{ margin: 'var(--space-5) 0 0', fontSize: 'var(--type-small)', lineHeight: 1.7, color: colors.riverStoneGray }}>
+              The identity was never missing. It had been there the entire time, inside the story of two people who spent twenty years building something from nothing into a real, successful company. Our job wasn't to invent a name. It was to notice the one already sitting in plain sight — and give them permission to finally own it.
+            </p>
+            <p style={{ margin: 'var(--space-5) 0 0', fontSize: 'var(--type-small)', lineHeight: 1.7, color: colors.riverStoneGray }}>
+              The dynamite mark isn't a generic construction symbol. It's literal — TNT, the business's own initials — carrying the same weight as the joke that started it all.
+            </p>
+          </ScrollClipReveal>
+        </div>
       </div>
 
       {/* Problem / Insight / Solution — the documentary spine */}
@@ -272,13 +310,14 @@ export function TNTWorld({ onNavigate, onNavigateProject }) {
           <ScrollClipReveal style={{ marginBottom: 'var(--space-7)' }}>
             <div style={{ fontSize: 'var(--type-label)', letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase', color: colors.heroRed, marginBottom: 10 }}>Applications</div>
             <p style={{ margin: 0, fontFamily: fontDisplay, fontWeight: 400, fontSize: 'var(--type-title)', lineHeight: 1.3, color: colors.seaSaltWhite, maxWidth: '52ch' }}>
-              Trucks, trailers, and proposals that finally match twenty years of reputation.
+              Trucks, trailers, branded gear, and proposals that finally match twenty years of reputation.
             </p>
           </ScrollClipReveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 'var(--space-6)' }}>
             <MediaSlot src={project.applicationImages[0]} label="Vehicle Wrap" accent={colors.heroRed} />
             <MediaSlot src={project.applicationImages[1]} label="Trailer" accent={colors.heroRed} />
             <MediaSlot src={project.applicationImages[2]} label="Business Cards" accent={colors.heroRed} />
+            <MediaSlot src={project.applicationImages[3]} label="Branded Gear" accent={colors.heroRed} />
           </div>
         </div>
       </div>

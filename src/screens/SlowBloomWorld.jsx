@@ -5,6 +5,7 @@ import { ProjectNavFooter } from '../components/ProjectNavFooter.jsx';
 import { MediaSlot } from '../components/MediaSlot.jsx';
 import { ScrollSteamReveal } from '../components/ScrollSteamReveal.jsx';
 import { ProjectCursor } from '../components/ProjectCursor.jsx';
+import { Breadcrumb } from '../components/Breadcrumb.jsx';
 import { CALENDLY_URL, PROJECTS, SLOW_BLOOM_BRAND } from '../config.js';
 import { usePrefersReducedMotion } from '../usePrefersReducedMotion.js';
 
@@ -45,6 +46,15 @@ export function SlowBloomWorld({ onNavigate, onNavigateProject }) {
       >
         ← Back to Work
       </button>
+
+      <div style={{ position: 'fixed', top: 68, left: 'var(--pad-gutter)', zIndex: 49 }}>
+        <Breadcrumb
+          items={[{ label: 'Home', page: 'home' }, { label: 'Work', page: 'work' }, { label: 'Slow Bloom' }]}
+          onNavigate={onNavigate}
+          color={colors.cream}
+          accentColor={ACCENT}
+        />
+      </div>
 
       {/* Warm café light — slow breathing pulse across the whole scene */}
       <motion.div
@@ -176,6 +186,27 @@ export function SlowBloomWorld({ onNavigate, onNavigateProject }) {
         ))}
       </div>
 
+      {/* The Strategy — the real reasoning behind the mark, the palette, and the name */}
+      <div style={{ padding: 'var(--space-11) var(--pad-gutter)', background: `${colors.espresso}DD`, borderTop: `1px solid ${colors.mocha}33` }}>
+        <div style={{ maxWidth: '760px', margin: '0 auto' }}>
+          <ScrollSteamReveal>
+            <div style={{ fontSize: 'var(--type-label)', letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase', color: ACCENT, marginBottom: 'var(--space-6)' }}>The Strategy</div>
+            <p style={{ margin: 0, fontFamily: fontDisplay, fontWeight: 400, fontSize: 'var(--type-title)', lineHeight: 1.35, color: colors.cream }}>
+              Slow Bloom's founders gave us one non-negotiable from day one: the name had to be Slow Bloom. Everything else was ours to figure out.
+            </p>
+            <p style={{ margin: 'var(--space-6) 0 0', fontSize: 'var(--type-small)', lineHeight: 1.7, color: `${colors.cream}B0` }}>
+              The obvious next step was to illustrate the name literally — a flower blooming, frame by frame. We caught that instinct early and let it go. The identity was never supposed to depict the name. It was supposed to produce the feeling behind it.
+            </p>
+            <p style={{ margin: 'var(--space-5) 0 0', fontSize: 'var(--type-small)', lineHeight: 1.7, color: `${colors.cream}B0` }}>
+              That feeling came from the founders themselves, not a coffee-industry mood board. They wanted Slow Bloom to be the opposite of the fast, transactional coffee shop — a place built around presence and the actual craft coffee has always come from. A stained-glass mark, pulled from an early mood board, carried exactly that: light, age, something that feels sacred and built to last. The leaves are an abstract S and B. The flower head was never meant to be specifically a rose — left open on purpose, so it's something people can look at for a while rather than read once and move on. Because the mark lives mostly on signage and coffee bags rather than a small app icon, it had room to stay intricate instead of simplifying down to 16 pixels.
+            </p>
+            <p style={{ margin: 'var(--space-5) 0 0', fontSize: 'var(--type-small)', lineHeight: 1.7, color: `${colors.cream}B0` }}>
+              The palette followed the same instinct — a blend of Japanese luxury and old-world aesthetic that still feels at home in a modern room, not a nostalgia piece.
+            </p>
+          </ScrollSteamReveal>
+        </div>
+      </div>
+
       {/* Roast Lines — real color-coded product lines */}
       <div style={{ padding: 'var(--space-11) var(--pad-gutter)', background: `${colors.espresso}DD`, borderTop: `1px solid ${colors.mocha}33` }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
@@ -206,7 +237,7 @@ export function SlowBloomWorld({ onNavigate, onNavigateProject }) {
           </ScrollSteamReveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-6)' }}>
             <div style={{ background: colors.cream, borderRadius: 8, aspectRatio: '1 / 1', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--space-6)' }}>
-              <img src={project.logoImage} alt="Slow Bloom logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              <img src={project.logoImage} alt="Slow Bloom logo" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </div>
             <div style={{ borderRadius: 8, overflow: 'hidden', display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr 1fr 1fr' }}>
               {Object.entries(colors).map(([name, hex]) => (
@@ -235,13 +266,14 @@ export function SlowBloomWorld({ onNavigate, onNavigateProject }) {
           <ScrollSteamReveal style={{ marginBottom: 'var(--space-7)' }}>
             <div style={{ fontSize: 'var(--type-label)', letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase', color: ACCENT, marginBottom: 10 }}>Applications</div>
             <p style={{ margin: 0, fontFamily: fontDisplay, fontWeight: 400, fontSize: 'var(--type-title)', lineHeight: 1.3, color: colors.cream, maxWidth: '52ch' }}>
-              Packaging, stationery, and ceramics — the ritual, wherever it's experienced.
+              Packaging, stationery, ceramics, and the website — the ritual, wherever it's experienced.
             </p>
           </ScrollSteamReveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-6)' }}>
             <MediaSlot src={project.applicationImages[0]} label="Ceramics" accent={ACCENT} />
             <MediaSlot src={project.applicationImages[1]} label="Stationery" accent={ACCENT} />
             <MediaSlot src={project.applicationImages[2]} label="Packaging" accent={ACCENT} />
+            <MediaSlot src={project.applicationImages[3]} label="Website" accent={ACCENT} />
           </div>
         </div>
       </div>

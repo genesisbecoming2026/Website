@@ -12,6 +12,7 @@ import { SlowBloomWorld } from './screens/SlowBloomWorld.jsx';
 import { SiteNav } from './components/SiteNav.jsx';
 import { usePrefersReducedMotion } from './usePrefersReducedMotion.js';
 import { PROJECTS } from './config.js';
+import { updateSEO } from './seo.js';
 
 const PAGE_TITLES = {
   home: 'Genesis Becoming — Branding & Immersive Design',
@@ -92,6 +93,7 @@ export function App() {
     } else {
       document.title = PAGE_TITLES[page] || 'Genesis Becoming';
     }
+    updateSEO(page, projectId);
   }, [page, projectId]);
 
   // Keep state in sync with the browser's back/forward buttons.

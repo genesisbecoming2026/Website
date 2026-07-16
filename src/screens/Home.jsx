@@ -4,9 +4,10 @@ import { Button } from '../components/Button.jsx';
 import { Eyebrow } from '../components/Eyebrow.jsx';
 import { Statement } from '../components/Statement.jsx';
 import { GlassPanel } from '../components/GlassPanel.jsx';
-import { WorkCard } from '../components/WorkCard.jsx';
-import { UnfoldIntro } from '../components/UnfoldIntro.jsx';
-import { IdentitySystemReveal } from '../components/IdentitySystemReveal.jsx';
+import { CoverFlowCarousel } from '../components/CoverFlowCarousel.jsx';
+import { OpeningSequence } from '../components/OpeningSequence.jsx';
+import { TestimonialHighlight } from '../components/TestimonialHighlight.jsx';
+import { FounderIntro } from '../components/FounderIntro.jsx';
 import { CALENDLY_URL, PROJECTS, SERVICES } from '../config.js';
 import { revealLeft, revealRight, revealUp, staggerParent, staggerChild, inViewProps } from '../motion.js';
 
@@ -23,15 +24,19 @@ function Section({ children, style, id }) {
 export function Home({ onEnterProject, onNavigate }) {
   return (
     <div style={{ background: 'var(--gb-ink)', color: 'var(--gb-bone)', minHeight: '100%' }}>
-      {/* Sections 1+2 combined — the hero dissolves into the diagnosis
-          as one continuous, pinned scroll-driven transformation.
-          Negative margin pulls it up flush behind the floating nav. */}
+      {/* The homepage's opening — hero, diagnosis, and the identity
+          network, treated as one continuous scroll-driven sequence
+          rather than three stacked sections. Negative margin pulls it
+          up flush behind the floating nav. */}
       <div id="understanding" style={{ marginTop: '-92px' }}>
-        <UnfoldIntro onEnterProject={onEnterProject} firstProjectId={PROJECTS[0].id} />
+        <OpeningSequence onEnterProject={onEnterProject} firstProjectId={PROJECTS[0].id} />
       </div>
 
-      {/* The homepage's signature scroll moment. */}
-      <IdentitySystemReveal />
+      {/* A single meaningful testimonial + CTA, catching the momentum
+          right after the signature moment. Full collection lives at
+          the bottom of the Work page instead of competing here. */}
+      <TestimonialHighlight />
+
       {/* Section 3 — The Solution */}
       <Section id="philosophy" style={{
         backgroundImage:
@@ -73,16 +78,8 @@ export function Home({ onEnterProject, onNavigate }) {
           <Statement eyebrow="Proof" size="display">Not beautiful pictures.<br />Evidence of <em style={{ color: 'var(--gb-gold)', fontStyle: 'italic' }}>transformation.</em></Statement>
           <Button variant="link" onClick={() => onNavigate('work')}>View all work</Button>
         </motion.div>
-        <motion.div
-          {...inViewProps}
-          variants={staggerParent}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 'var(--space-6)' }}
-        >
-          {PROJECTS.map((p) => (
-            <motion.div key={p.id} variants={staggerChild}>
-              <WorkCard index={p.id === 'tnt' ? '03' : p.id === 'bloom' ? '02' : '01'} title={p.title} world={p.id} image={p.heroImage} meta={p.summary} onClick={() => onEnterProject(p.id)} />
-            </motion.div>
-          ))}
+        <motion.div {...inViewProps} variants={revealUp}>
+          <CoverFlowCarousel items={PROJECTS} onEnterProject={onEnterProject} />
         </motion.div>
         <motion.div {...inViewProps} variants={revealUp} style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
           <p style={{ margin: '0 0 var(--space-5)', fontFamily: 'var(--font-display)', fontSize: 'var(--type-title)', fontStyle: 'italic', color: 'var(--gb-stone)' }}>
@@ -95,14 +92,17 @@ export function Home({ onEnterProject, onNavigate }) {
       {/* Section 5 — Services preview, outcome-oriented not feature-oriented */}
       <Section id="services-preview" style={{ borderTop: '1px solid var(--border-hairline)' }}>
         <motion.div {...inViewProps} variants={revealUp} style={{ marginBottom: 'var(--space-8)' }}>
-          <Statement eyebrow="How can we help?" size="display">Clarify your identity.<br />Build your website.<br />Launch your brand.<br />Support your <em style={{ color: 'var(--gb-gold)', fontStyle: 'italic' }}>growth.</em></Statement>
+          <Statement eyebrow="How can we help?" size="display">Become recognizable.<br />Turn visitors into inquiries.<br />Present your business with <em style={{ color: 'var(--gb-gold)', fontStyle: 'italic' }}>confidence.</em></Statement>
         </motion.div>
         <motion.div {...inViewProps} variants={staggerParent} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-5)' }}>
           {SERVICES.map((s) => (
             <motion.div key={s.title} variants={staggerChild}>
               <GlassPanel padded tilt style={{ padding: 'var(--space-6)', height: '100%' }}>
-                <h4 style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: '1.3rem', color: 'var(--gb-bone)', fontWeight: 400 }}>{s.title}</h4>
-                <p style={{ margin: '12px 0 0', fontSize: 'var(--type-small)', lineHeight: 1.6, color: 'var(--gb-stone)' }}>{s.description}</p>
+                <h4 style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: '1.3rem', color: 'var(--gb-bone)', fontWeight: 400 }}>{s.problem}</h4>
+                <div style={{ fontSize: 'var(--type-label)', letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase', color: 'var(--gb-gold)', margin: '10px 0 0', fontWeight: 600 }}>
+                  {s.title}
+                </div>
+                <p style={{ margin: '10px 0 0', fontSize: 'var(--type-small)', lineHeight: 1.6, color: 'var(--gb-stone)' }}>{s.description}</p>
               </GlassPanel>
             </motion.div>
           ))}
@@ -111,6 +111,10 @@ export function Home({ onEnterProject, onNavigate }) {
           <Button variant="link" onClick={() => onNavigate('services')}>See how each service works →</Button>
         </motion.div>
       </Section>
+
+      {/* Founder introduction — understand who you'd be working with,
+          before the final invitation */}
+      <FounderIntro />
 
       {/* Section 6 — Invitation */}
       <Section id="contact" style={{
@@ -166,7 +170,7 @@ export function Home({ onEnterProject, onNavigate }) {
           fontSize: 'var(--type-micro)', letterSpacing: 'var(--tracking-wide)',
           textTransform: 'uppercase', color: 'var(--text-muted)',
         }}>
-          <span>Genesis Becoming</span><span>·</span><span>Columbia, Tennessee</span><span>·</span><span>© 2026</span>
+          <span>Genesis Becoming</span><span>·</span><span>Columbia, TN — Nashville Area</span><span>·</span><span>© 2026</span>
         </div>
       </Section>
     </div>

@@ -4,6 +4,8 @@ import { Statement } from '../components/Statement.jsx';
 import { Eyebrow } from '../components/Eyebrow.jsx';
 import { Button } from '../components/Button.jsx';
 import { GlassPanel } from '../components/GlassPanel.jsx';
+import { PhotoMoment } from '../components/PhotoMoment.jsx';
+import { FAQSection } from '../components/FAQSection.jsx';
 import { CALENDLY_URL, CONTACT_EMAIL, SERVICES } from '../config.js';
 import { revealLeft, revealRight, revealUp, inViewProps } from '../motion.js';
 
@@ -13,8 +15,24 @@ export function Services() {
       <section style={{ padding: 'var(--space-11) var(--pad-gutter) var(--space-9)' }}>
         <motion.div {...inViewProps} variants={revealUp}>
           <Eyebrow style={{ marginBottom: 'var(--space-6)' }}>Services</Eyebrow>
-          <Statement size="hero">How can we<br /><em style={{ color: 'var(--gb-gold)', fontStyle: 'italic' }}>help?</em></Statement>
+          <Statement size="hero" level="h1">How can we<br /><em style={{ color: 'var(--gb-gold)', fontStyle: 'italic' }}>help?</em></Statement>
+          <p style={{ marginTop: 'var(--space-6)', maxWidth: '52ch', fontSize: 'var(--type-lead)', fontWeight: 300, lineHeight: 'var(--leading-relaxed)', color: 'var(--gb-stone)' }}>
+            Most businesses don't have a design problem. They have a trust problem, a clarity problem, a growth problem. Design is simply how we solve it.
+          </p>
         </motion.div>
+      </section>
+
+      <section style={{ padding: '0 var(--pad-gutter) var(--space-9)' }}>
+        <PhotoMoment
+          src="/images/services/services-aerial-labyrinth-path.jpg"
+          alt="Aerial view of a stone walking labyrinth, a single figure partway along its path"
+          aspectRatio="21 / 9"
+          style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', maxWidth: 'var(--width-content)', margin: '0 auto' }}
+        >
+          <p style={{ margin: 0, fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 'var(--type-title)', color: 'var(--gb-bone)', lineHeight: 1.35 }}>
+            Every business already has a path to clarity. <em style={{ color: 'var(--gb-gold)' }}>We help you find it.</em>
+          </p>
+        </PhotoMoment>
       </section>
 
       <section style={{ padding: '0 var(--pad-gutter) var(--space-11)', display: 'flex', flexDirection: 'column', gap: 'var(--space-7)' }}>
@@ -22,10 +40,10 @@ export function Services() {
           <motion.div key={s.title} {...inViewProps} variants={i % 2 === 0 ? revealLeft : revealRight}>
             <GlassPanel padded tilt style={{ padding: 'var(--space-8)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-7)', alignItems: 'center' }}>
               <div>
-                <div style={{ fontSize: '1rem', letterSpacing: 'var(--tracking-wider)', textTransform: 'uppercase', color: 'var(--gb-gold)', marginBottom: 10, fontWeight: 600 }}>
-                  {s.label}
+                <h3 style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: 'var(--type-display)', fontWeight: 400, color: 'var(--gb-bone)' }}>{s.problem}</h3>
+                <div style={{ fontSize: '1rem', letterSpacing: 'var(--tracking-wider)', textTransform: 'uppercase', color: 'var(--gb-gold)', margin: '10px 0 0', fontWeight: 600 }}>
+                  {s.title}
                 </div>
-                <h3 style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: 'var(--type-display)', fontWeight: 400, color: 'var(--gb-bone)' }}>{s.title}</h3>
                 <p style={{ margin: '14px 0 0', fontSize: 'var(--type-small)', lineHeight: 1.6, color: 'var(--gb-stone)' }}>{s.description}</p>
               </div>
               <div style={{ borderLeft: '1px solid var(--border-hairline)', paddingLeft: 'var(--space-6)' }}>
@@ -38,6 +56,8 @@ export function Services() {
           </motion.div>
         ))}
       </section>
+
+      <FAQSection />
 
       <section style={{
         padding: 'var(--space-11) var(--pad-gutter)', textAlign: 'center',

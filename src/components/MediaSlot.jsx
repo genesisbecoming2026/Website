@@ -11,7 +11,7 @@ export function MediaSlot({ src, alt = '', label, accent = 'var(--gb-gold)', asp
   if (src) {
     return (
       <div style={{ aspectRatio, borderRadius: 8, overflow: 'hidden', ...style }}>
-        <img src={src} alt={alt} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        <img src={src} alt={alt} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       </div>
     );
   }

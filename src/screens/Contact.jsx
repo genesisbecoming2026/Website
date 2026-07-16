@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../components/Button.jsx';
-import { CALENDLY_URL, CONTACT_EMAIL } from '../config.js';
+import { CALENDLY_URL, CONTACT_EMAIL, INSTAGRAM_URL } from '../config.js';
 import { revealUp, staggerParent, staggerChild, inViewProps } from '../motion.js';
 
 export function Contact() {
@@ -33,6 +33,19 @@ export function Contact() {
         <motion.p variants={staggerChild} style={{ marginTop: 'var(--space-8)', fontSize: 'var(--type-small)', color: 'var(--gb-stone)' }}>
           Prefer email? <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: 'var(--gb-gold)' }}>{CONTACT_EMAIL}</a>
         </motion.p>
+        <motion.div variants={staggerChild} style={{ marginTop: 'var(--space-5)' }}>
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontSize: 'var(--type-label)', letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase',
+              color: 'var(--gb-stone)', textDecoration: 'none',
+            }}
+          >
+            @genesisbecoming on Instagram
+          </a>
+        </motion.div>
       </motion.div>
     </div>
   );

@@ -6,7 +6,7 @@
     <title>Genesis Becoming — Branding &amp; Immersive Design</title>
     <meta
       name="description"
-      content="Genesis Becoming helps businesses, churches, and organizations uncover, express, and communicate what already makes them valuable — through thoughtful identity systems and immersive digital experiences. Columbia, Tennessee."
+      content="Genesis Becoming helps businesses, churches, and organizations uncover, express, and communicate what already makes them valuable — through thoughtful identity systems and immersive digital experiences. Columbia, Tennessee — Nashville area."
     />
     <meta name="theme-color" content="#141414" />
 
@@ -17,7 +17,64 @@
       content="Has your business outgrown the way it's represented? We build identities that communicate trust before a single conversation begins."
     />
     <meta property="og:type" content="website" />
-    <link rel="icon" type="image/png" href="/logo-signature.png" />
+    <meta property="og:site_name" content="Genesis Becoming" />
+    <meta property="og:image" content="https://genesisbecoming.com/og-image.jpg" />
+    <meta property="og:url" content="https://genesisbecoming.com/" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Genesis Becoming" />
+    <meta name="twitter:description" content="Has your business outgrown the way it's represented? We build identities that communicate trust before a single conversation begins." />
+    <meta name="twitter:image" content="https://genesisbecoming.com/og-image.jpg" />
+
+    <!-- Canonical — updated dynamically per page by src/seo.js as the
+         visitor navigates; this is the sensible default for the root. -->
+    <link rel="canonical" href="https://genesisbecoming.com/" />
+
+    <link rel="icon" type="image/x-icon" href="/favicons/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/app-icon-180x180.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Structured data — helps Google, Bing, and AI/LLM-based search
+         understand who Genesis Becoming is, not just what the page says.
+         Organization + LocalBusiness + the founder as a Person, all in
+         one graph since these facts don't change per page. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://genesisbecoming.com/#organization",
+          "name": "Genesis Becoming",
+          "url": "https://genesisbecoming.com/",
+          "logo": "https://genesisbecoming.com/logo-signature.png",
+          "image": "https://genesisbecoming.com/logo-signature.png",
+          "description": "A creative studio specializing in brand identity, website design, and creative direction for businesses, ministries, churches, and organizations that want to communicate with greater clarity and confidence.",
+          "email": "info@genesisbecoming.com",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Columbia",
+            "addressRegion": "TN",
+            "addressCountry": "US"
+          },
+          "areaServed": ["Columbia, TN", "Nashville, TN", "Middle Tennessee"],
+          "founder": { "@id": "https://genesisbecoming.com/#founder" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://genesisbecoming.com/#founder",
+          "name": "Ty Hathaway",
+          "jobTitle": "Founder",
+          "worksFor": { "@id": "https://genesisbecoming.com/#organization" }
+        }
+      ]
+    }
+    </script>
+
     <!-- Sora + Inter: TNT Builders' actual specified brand typefaces
          (per their brand presentation). Loaded globally but only
          applied within TNTWorld via TNT_BRAND.fontDisplay/fontBody —
@@ -26,7 +83,60 @@
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!--
+        Static fallback content — for crawlers that don't execute
+        JavaScript (many AI crawlers, some search engines). React
+        replaces this instantly and invisibly for real visitors via a
+        plain client-side render (no hydration, so no mismatch risk).
+        Kept accurate and current with the real site — not keyword
+        stuffing, an honest summary of what's actually here.
+      -->
+      <header>
+        <h1>Genesis Becoming</h1>
+        <p>Has your business outgrown the way it's represented? Genesis Becoming is a creative studio specializing in brand identity, website design, and creative direction for businesses, ministries, churches, nonprofits, organizations, and creative professionals who want to communicate with greater clarity and confidence.</p>
+      </header>
+      <nav>
+        <a href="/work">Work</a>
+        <a href="/approach">Our Approach</a>
+        <a href="/studio">Studio</a>
+        <a href="/services">Services</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <main>
+        <section>
+          <h2>Our Approach</h2>
+          <p>We don't invent identities. We uncover them. Great design begins long before the logo — through strategy, conversation, and thoughtful design, we help businesses express who they already are with greater clarity and confidence. Before people experience your work, they experience your brand.</p>
+        </section>
+        <section>
+          <h2>Selected Work</h2>
+          <article>
+            <h3>Grow</h3>
+            <p>Naming, identity, and motion design for Grow, a coaching ministry helping people move forward in freedom, identity, and deeper partnership with God.</p>
+          </article>
+          <article>
+            <h3>Slow Bloom</h3>
+            <p>Brand identity and editorial website design for Slow Bloom, an artisanal coffee roaster built on ritual and intentional living.</p>
+          </article>
+          <article>
+            <h3>TNT Builders</h3>
+            <p>Brand identity for TNT Builders, a family-run construction company built on integrity, craftsmanship, and relationships.</p>
+          </article>
+        </section>
+        <section>
+          <h2>Services</h2>
+          <ul>
+            <li>Brand Identity — a clear, memorable identity that helps people recognize, trust, and choose your business</li>
+            <li>Website Design — a website that communicates your value, builds trust, and makes it easy for people to take the next step</li>
+            <li>Creative Direction — a cohesive visual system that makes every customer interaction feel intentional and professional</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Contact</h2>
+          <p>Based in Columbia, Tennessee, serving the greater Nashville area. Email <a href="mailto:info@genesisbecoming.com">info@genesisbecoming.com</a> or book a complimentary discovery call.</p>
+        </section>
+      </main>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

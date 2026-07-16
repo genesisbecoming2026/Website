@@ -13,6 +13,7 @@ export function Statement({
   support,
   align = 'left',
   size = 'display',
+  level = 'h2',
   style = {},
   ...rest
 }) {
@@ -56,16 +57,18 @@ export function Statement({
     maxWidth: 'var(--measure-lead)',
   };
 
+  const HeadingTag = motion[level] || motion.h2;
+
   return (
     <div style={wrap} {...rest}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <motion.h2
+      <HeadingTag
         style={heading}
         whileHover={{ letterSpacing: '-0.008em' }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
         {children}
-      </motion.h2>
+      </HeadingTag>
       {support && <p style={supp}>{support}</p>}
     </div>
   );

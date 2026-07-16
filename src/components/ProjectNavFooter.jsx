@@ -77,7 +77,7 @@ export function ProjectNavFooter({ currentId, onNavigate, onNavigateProject, acc
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            background: accent, color: '#1a140d', borderRadius: 'var(--radius-pill)',
+            background: accent, color: 'var(--gb-ink)', borderRadius: 'var(--radius-pill)',
             padding: '16px 32px', fontFamily: 'var(--font-sans)', fontWeight: 500,
             fontSize: 14, letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none',
           }}
