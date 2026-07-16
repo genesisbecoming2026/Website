@@ -314,7 +314,7 @@ export function TNTWorld({ onNavigate, onNavigateProject }) {
             </p>
           </ScrollClipReveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 'var(--space-6)' }}>
-            <MediaSlot src={project.applicationImages[0]} label="Vehicle Wrap" accent={colors.heroRed} />
+            <MediaSlot src={project.applicationImages[0]} label="Brand In The Field" accent={colors.heroRed} />
             <MediaSlot src={project.applicationImages[1]} label="Trailer" accent={colors.heroRed} />
             <MediaSlot src={project.applicationImages[2]} label="Business Cards" accent={colors.heroRed} />
             <MediaSlot src={project.applicationImages[3]} label="Branded Gear" accent={colors.heroRed} />

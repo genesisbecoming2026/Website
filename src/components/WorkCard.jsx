@@ -21,6 +21,8 @@ export function WorkCard({
   meta,
   index,
   image,
+  logoImage,
+  accentColor,
   world = 'bloom',
   href,
   aspect = '4 / 5',
@@ -114,6 +116,33 @@ export function WorkCard({
       {...rest}
     >
       <div style={media} />
+      {logoImage && (
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: `color-mix(in oklch, ${accentColor || 'var(--gb-gold)'} 38%, var(--glass-fill-dark))`,
+          backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur)',
+        }}>
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, height: '64%',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            padding: 'var(--space-6)',
+          }}>
+            <div style={{
+              width: '100%', height: '100%',
+              background: 'color-mix(in oklch, var(--gb-bone) 85%, transparent)',
+              backdropFilter: 'blur(16px) saturate(140%)', WebkitBackdropFilter: 'blur(16px) saturate(140%)',
+              borderRadius: 'var(--radius-lg)',
+              border: '1px solid var(--border-hairline)',
+              borderTop: '1px solid rgba(255,255,255,0.6)',
+              boxShadow: 'var(--glass-edge), var(--shadow-md)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              padding: 'var(--space-5)',
+            }}>
+              <img src={logoImage} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+            </div>
+          </div>
+        </div>
+      )}
       <div style={veil} />
       <div style={content}>
         <div style={idxRow}>

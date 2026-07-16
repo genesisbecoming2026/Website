@@ -41,6 +41,8 @@ export function Work({ onEnterProject }) {
                 title={p.title}
                 world={p.id}
                 image={p.thumbnailImage || p.heroImage}
+                logoImage={p.logoImage}
+                accentColor={p.accentColor}
                 meta={p.summary}
                 onClick={() => onEnterProject(p.id)}
               />

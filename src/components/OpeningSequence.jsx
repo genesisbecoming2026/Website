@@ -307,7 +307,7 @@ export function OpeningSequence({ onEnterProject, firstProjectId }) {
           </p>
           <div style={{ marginTop: 'var(--space-8)', display: 'flex', gap: 'var(--space-4)', alignItems: 'center' }}>
             <Button variant="primary" size="lg" onClick={() => onEnterProject(firstProjectId)}>See the Work</Button>
-            <Button variant="link" href="#understanding">Keep Reading</Button>
+            <Button variant="link" href="#philosophy">Keep Reading</Button>
           </div>
           <div style={{ position: 'absolute', bottom: 'var(--space-7)', left: 'var(--pad-gutter)', fontSize: 'var(--type-micro)', letterSpacing: 'var(--tracking-wider)', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
             Scroll to move through the space
@@ -330,7 +330,7 @@ export function OpeningSequence({ onEnterProject, firstProjectId }) {
         </motion.div>
 
         {/* Diagnosis truths — rise as glass, then dissolve into the network */}
-        <div style={{ position: 'absolute', inset: 0, padding: 'var(--pad-gutter)', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 'var(--space-6)', zIndex: 2 }}>
+        <div style={{ position: 'absolute', inset: 0, padding: 'var(--pad-gutter)', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 'var(--space-6)', zIndex: 2, pointerEvents: 'none' }}>
           {TRUTHS.map((t, i) => (
             <DiagnosisCard key={i} truth={t} index={i} scrollYProgress={scrollYProgress} side={i % 2 === 0 ? 'left' : 'right'} />
           ))}
@@ -371,7 +371,7 @@ export function OpeningSequence({ onEnterProject, firstProjectId }) {
         {/* Closing copy — lands only after the network resolves */}
         <motion.div style={{
           position: 'absolute', left: 0, right: 0, bottom: 0, padding: 'var(--space-10) var(--pad-gutter)',
-          opacity: closingOpacity, y: closingY, zIndex: 3,
+          opacity: closingOpacity, y: closingY, zIndex: 3, pointerEvents: 'none',
           background: 'linear-gradient(to top, color-mix(in oklch, var(--gb-ink) 95%, transparent) 40%, transparent)',
         }}>
           <div style={{ maxWidth: '640px', margin: '0 auto', textAlign: 'center' }}>
