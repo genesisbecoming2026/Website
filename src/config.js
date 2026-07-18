@@ -50,7 +50,7 @@ export const PROJECTS = [
     thumbnailImage: '/images/tnt/tnt-thumbnail-composed.jpg',
     logoImage: '/images/tnt/tnt-logo-primary.png',
     crewImage: '/images/tnt/tnt-crew-jobsite.jpg',
-    applicationImages: ['/images/tnt/tnt-brand-in-the-field.jpg', '/images/tnt/tnt-trailer.jpg', '/images/tnt/tnt-cards.jpg', '/images/tnt/tnt-branded-gear.jpg'],
+    applicationImages: ['/images/tnt/tnt-brand-in-the-field.jpg', '/images/tnt/tnt-trailer.jpg', '/images/tnt/tnt-caps.jpg', '/images/tnt/tnt-branded-gear.jpg'],
   },
 ];
 
