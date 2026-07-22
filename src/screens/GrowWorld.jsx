@@ -279,21 +279,29 @@ export function GrowWorld({ onNavigate, onNavigateProject }) {
         </ScrollBloom>
       </div>
 
-      {/* The Website — real screenshots of the live site */}
-      {project.siteImages && (
-        <div style={{ padding: 'var(--space-11) var(--pad-gutter)', borderTop: `1px solid ${colors.sage}22` }}>
-          <ScrollBloom style={{ maxWidth: '900px', margin: '0 auto' }}>
-            <div style={{ fontSize: 'var(--type-label)', letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase', color: ACCENT, marginBottom: 'var(--space-5)', textAlign: 'center' }}>
+      {/* The Website — now live */}
+      {project.websiteUrl && (
+        <div style={{ padding: 'var(--space-11) var(--pad-gutter)', borderTop: `1px solid ${colors.sage}22`, textAlign: 'center' }}>
+          <ScrollBloom style={{ maxWidth: '760px', margin: '0 auto' }}>
+            <div style={{ fontSize: 'var(--type-label)', letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase', color: ACCENT, marginBottom: 'var(--space-5)' }}>
               The Website
             </div>
-            <p style={{ margin: '0 0 var(--space-7)', fontFamily: fontDisplay, fontWeight: 400, fontSize: '1.2rem', fontStyle: 'italic', color: `${colors.morningMist}CC`, textAlign: 'center' }}>
-              A first look — Kari is finishing a few final details before it goes live.
+            <p style={{ margin: '0 0 var(--space-7)', fontFamily: fontDisplay, fontWeight: 400, fontSize: 'var(--type-title)', lineHeight: 1.3, color: colors.morningMist }}>
+              See the identity in its full home, live.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-6)' }}>
-              {project.siteImages.map((img) => (
-                <MediaSlot key={img.label} src={img.src} label={img.label} accent={ACCENT} aspectRatio="16 / 10" />
-              ))}
-            </div>
+            <a
+              href={project.websiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                fontFamily: fontBody, fontSize: 'var(--type-label)',
+                letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase',
+                color: ACCENT, textDecoration: 'none',
+              }}
+            >
+              growministries.life <span aria-hidden="true">→</span>
+            </a>
           </ScrollBloom>
         </div>
       )}

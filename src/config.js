@@ -21,14 +21,7 @@ export const PROJECTS = [
     logoImage: '/images/grow/grow-logo-primary.png',
     iconImage: '/images/grow/grow-icon.png',
     applicationImages: ['/images/grow/grow-cards-1.jpg', '/images/grow/grow-cards-2.jpg'],
-    // Real screenshots of the live site, cleaned up (browser chrome and a
-    // third-party chat widget removed). Pre-launch as of this writing —
-    // Kari is still finishing content before it goes live.
-    siteImages: [
-      { src: '/images/grow/grow-site-hero.jpg', label: 'Home' },
-      { src: '/images/grow/grow-site-who-we-serve.jpg', label: 'Who We Serve' },
-      { src: '/images/grow/grow-site-philosophy.jpg', label: 'Our Philosophy' },
-    ],
+    websiteUrl: 'https://www.growministries.life',
   },
   {
     id: 'bloom',
