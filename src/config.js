@@ -22,6 +22,7 @@ export const PROJECTS = [
     iconImage: '/images/grow/grow-icon.png',
     applicationImages: ['/images/grow/grow-cards-1.jpg', '/images/grow/grow-cards-2.jpg'],
     websiteUrl: 'https://www.growministries.life',
+    oldLogoImage: '/images/grow/grow-logo-old.png',
   },
   {
     id: 'bloom',
@@ -44,6 +45,7 @@ export const PROJECTS = [
     logoImage: '/images/tnt/tnt-logo-primary.png',
     crewImage: '/images/tnt/tnt-crew-jobsite.jpg',
     applicationImages: ['/images/tnt/tnt-brand-in-the-field.jpg', '/images/tnt/tnt-trailer.jpg', '/images/tnt/tnt-caps.jpg'],
+    oldLogoImage: '/images/tnt/tnt-logo-old.jpg',
   },
 ];
 

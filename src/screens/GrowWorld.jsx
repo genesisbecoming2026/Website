@@ -184,6 +184,29 @@ export function GrowWorld({ onNavigate, onNavigateProject }) {
         </ScrollBloom>
       </div>
 
+      {/* The Challenge — why the previous identity had to go */}
+      {project.oldLogoImage && (
+        <div style={{ padding: 'var(--space-11) var(--pad-gutter)', borderTop: `1px solid ${colors.sage}22` }}>
+          <div style={{ maxWidth: '760px', margin: '0 auto', display: 'flex', gap: 'var(--space-8)', alignItems: 'center', flexWrap: 'wrap' }}>
+            <ScrollBloom style={{ flex: '1 1 380px' }}>
+              <div style={{ fontSize: 'var(--type-label)', letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase', color: ACCENT, marginBottom: 'var(--space-6)' }}>
+                The Challenge
+              </div>
+              <p style={{ margin: 0, fontFamily: fontDisplay, fontWeight: 400, fontSize: 'var(--type-title)', lineHeight: 1.35, color: colors.morningMist }}>
+                Before the fingerprint, the brand didn't feel like Grow.
+              </p>
+              <p style={{ margin: 'var(--space-6) 0 0', fontSize: 'var(--type-small)', lineHeight: 1.7, color: `${colors.morningMist}A8` }}>
+                Kari never felt like the original mark represented what she'd built. The website built around it read as clinical, sterile — closer to a digital laboratory than a place for people to be met with grace. It wasn't a bad logo. It just wasn't hers, and the goal and heart behind Grow were something else entirely: safe, personal, patient. The identity needed to catch up to what the ministry had always been.
+              </p>
+            </ScrollBloom>
+            <div style={{ flexShrink: 0, width: 180, padding: 'var(--space-6)', background: colors.morningMist, borderRadius: 8 }}>
+              <img src={project.oldLogoImage} alt="Grow's previous logo" loading="lazy" decoding="async" style={{ width: '100%', height: 'auto', display: 'block' }} />
+              <div style={{ marginTop: 10, fontSize: 11, textAlign: 'center', color: colors.grove, textTransform: 'uppercase', letterSpacing: '0.06em' }}>Previous Identity</div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* The Grow Experience — one idea, four qualities, spacious */}
       <div style={{ padding: 'var(--space-11) var(--pad-gutter)', borderTop: `1px solid ${colors.sage}22` }}>
         <ScrollBloom style={{ maxWidth: '900px', margin: '0 auto' }}>

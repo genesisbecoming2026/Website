@@ -239,13 +239,21 @@ export function TNTWorld({ onNavigate, onNavigateProject }) {
       {/* Problem / Insight / Solution — the documentary spine */}
       <div style={{ padding: 'var(--space-11) var(--pad-gutter)', maxWidth: '760px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 'var(--space-9)' }}>
         {[
-          { label: 'The Problem', copy: 'TNT\u2019s previous identity was simple, but it lacked distinction \u2014 familiar construction symbolism that did little to communicate what set the company apart.' },
+          { label: 'The Problem', copy: 'TNT\u2019s previous identity was simple, but it lacked distinction \u2014 familiar construction symbolism that did little to communicate what set the company apart.', beforeImage: project.oldLogoImage },
           { label: 'The Insight', copy: 'People often judge credibility before they experience craftsmanship.' },
           { label: 'The Solution', copy: 'An identity built on the same integrity, craftsmanship, and relationships the business itself was built on.' },
         ].map((b) => (
           <ScrollClipReveal key={b.label}>
             <div style={{ fontSize: 'var(--type-label)', letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase', color: colors.heroRed, marginBottom: 10 }}>{b.label}</div>
-            <p style={{ margin: 0, fontFamily: fontDisplay, fontWeight: 400, fontSize: 'var(--type-title)', lineHeight: 1.25, color: colors.seaSaltWhite }}>{b.copy}</p>
+            <div style={{ display: 'flex', gap: 'var(--space-7)', alignItems: 'center', flexWrap: 'wrap' }}>
+              <p style={{ margin: 0, flex: '1 1 320px', fontFamily: fontDisplay, fontWeight: 400, fontSize: 'var(--type-title)', lineHeight: 1.25, color: colors.seaSaltWhite }}>{b.copy}</p>
+              {b.beforeImage && (
+                <div style={{ flexShrink: 0, width: 150, padding: 'var(--space-5)', background: colors.seaSaltWhite, borderRadius: 8 }}>
+                  <img src={b.beforeImage} alt="TNT Builders' previous logo" loading="lazy" decoding="async" style={{ width: '100%', height: 'auto', display: 'block' }} />
+                  <div style={{ marginTop: 10, fontSize: 11, textAlign: 'center', color: colors.charcoalBlack, textTransform: 'uppercase', letterSpacing: '0.06em' }}>Previous Identity</div>
+                </div>
+              )}
+            </div>
           </ScrollClipReveal>
         ))}
       </div>
